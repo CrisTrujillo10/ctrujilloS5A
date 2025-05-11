@@ -6,18 +6,20 @@
              >
     <VerticalStackLayout
         Padding="20"
-        Spacing="20">
+        Spacing="15">
         <Label           
-            Text="SEMANA 8 SQLITE"
-            VerticalOptions="Center"
-            FontSize="20"
+            Text="SEMANA 5 SQLITE"
+            FontSize="24"
+            VerticalOptions="Center"          
             HorizontalOptions="Center" />
 
         <Entry
             x:Name="txtNombre"
             Placeholder="Ingrese el nombre"/>
-        <Grid>
+        
+        <Grid RowSpacing="10" ColumnSpacing="10">
             <Grid.RowDefinitions>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -35,25 +37,41 @@
             Grid.Row="0"
             Grid.Column="0"/>
 
+        <Button
+            x:Name="btnActualizar"
+            Text="Actualizar datos"
+            Clicked="btnActualizar_Clicked"
+            Grid.Row="1"
+            Grid.Column="0"/>
+
+        <Button
+            x:Name="btnEliminar"
+            Text="Eliminar datos"
+            Clicked="btnEliminar_Clicked"
+            Grid.Row="2"
+            Grid.Column="0"/>
+
         <Label
              x:Name="statusMessage"
              FontSize="18"
              TextColor="Red"
-             Grid.Row="1"
+             Grid.Row="3"
              Grid.Column="0"/>
 
         <Button
             x:Name="btnListar"
             Text="Listar personas"
             Clicked="btnListar_Clicked"
-            Grid.Row="2"
+            Grid.Row="4"
             Grid.Column="0"/>
 
             <CollectionView
                 
              x:Name="listPersonas"
-             Grid.Row="3"
-             Grid.Column="0">
+             Grid.Row="5"
+             Grid.Column="0"
+             SelectionMode="Single"
+             SelectionChanged="listPersonas_SelectionChanged">
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

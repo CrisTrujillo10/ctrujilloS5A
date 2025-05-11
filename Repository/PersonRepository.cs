@@ -55,10 +55,46 @@ namespace ctrujilloS5A.Repository
             }
             catch (Exception ex)
             {
-
                 statusMessage = string.Format("ERRROR "+ex);
             }
             return new List<Persona>();
+        }
+
+        public void UpdatePerson(int id, string newName)
+        {
+            try
+            {
+                Init();
+                var person = conn.Table<Persona>().FirstOrDefault(p => p.Id == id);
+                if (person == null)
+                    throw new Exception("Nombre no encontrado");
+
+                person.Name = newName;
+                conn.Update(person);
+                statusMessage = string.Format("Dato actualizado");
+            }
+            catch (Exception ex)
+            {
+                statusMessage = string.Format("ERRROR " + ex);
+            }          
+        }
+
+        public void DeletePerson(int id)
+        {
+            try
+            {
+                Init();
+                var person = conn.Table<Persona>().FirstOrDefault(p => p.Id == id);
+                if (person == null)
+                    throw new Exception("Nombre Eliminado");
+
+                conn.Delete(person);
+                statusMessage = string.Format("Dato eliminado");
+            }
+            catch (Exception ex)
+            {
+                statusMessage = string.Format("ERRROR " + ex);
+            }
         }
     }
 }
